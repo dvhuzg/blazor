@@ -19,16 +19,16 @@ else
 {
     <DeleteGame Game="@currentGame" OnClose="@OnDeleteModalClose"></DeleteGame>
     <table class="table table-striped table-bordered table-hover">
-        <thead class="table-dark">
-            <th>Id</th>
-            <th>Name</th>
-            <th>Genre</th>
-            <th>Price</th>
-            <th>Release Date</th>
-            <th></th>
-        </thead>
-        <tbody>
-            @foreach (var game in games)
+    <thead class="table-dark">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Release Date</th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var game in games)
             {
                 <tr>
                     <td>@game.Id</td>
@@ -36,9 +36,10 @@ else
                     <td>@game.Genre</td>
                     <td>@game.Price</td>
                     <td>@game.ReleaseDate.ToString("MM/dd/yy")</td>
-                    <td><button type="button" class="btn btn-primary" @onclick="()=> EditGame(game.Id)">Edit</button>
+                    <td>
+                        <button type="button" class="btn btn-primary" @onclick="()=> EditGame(game.Id)">Edit</button>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                            @onclick="(() => currentGame = game)">Delete</button>
+                            @onclick="(() => { currentGame = game;})">Delete</button>
                     </td>
                 </tr>
             }
